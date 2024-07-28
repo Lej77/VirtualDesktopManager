@@ -34,6 +34,15 @@ jobs:
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v2
 
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+
+    - name: Build JavaScript Client (Without generating new ProtoBuf bindings)
+      run: |
+        cd ./virtual-desktop-client/client-js
+        npm install
+        npm run build
+
     - name: Restore NuGet packages
       run: nuget restore ${{ env.APP_NAME }}
 
