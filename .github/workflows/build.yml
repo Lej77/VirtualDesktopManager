@@ -13,13 +13,13 @@ env:
 
 jobs:
   build:
-    name: Build and deploy
+    name: Build
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
 
-    - name: Setup MSBuild path
-      uses: microsoft/setup-msbuild@v1.0.1
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v2
       with:
         vs-version: "[16.4,16.9)"
 
