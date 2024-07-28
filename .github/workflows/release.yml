@@ -1,7 +1,10 @@
 # Copied from: https://github.com/timheuer/SimpleFrameworkApp/blob/3169a4cf6f8a72cce1b0c9e69dcf630b8a94ed86/.github/workflows/build.yml
 # See also the associated blog: https://timheuer.com/blog/building-net-framework-apps-using-github-actions/
 
-name: Build
+name: Release
+
+permissions:
+  contents: write
 
 on:
   push:
@@ -55,7 +58,6 @@ jobs:
         name: VirtualDesktopManager
         path: "VirtualDesktopManager/bin/Release/"
 
-    # Zip release files
     - name: Zip release files
       run: powershell Compress-Archive VirtualDesktopManager/bin/Release/ VirtualDesktopManager.zip
 
@@ -72,7 +74,7 @@ jobs:
         prerelease: false
 
     # Upload release asset:   https://github.com/actions/upload-release-asset
-    - name: Update release asset
+    - name: Upload release asset
       id: upload-release-asset
       uses: actions/upload-release-asset@v1
       env:
