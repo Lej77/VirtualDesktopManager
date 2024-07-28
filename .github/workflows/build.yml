@@ -9,7 +9,6 @@ on:
 
 env:
   APP_NAME: VirtualDesktopManager.sln  # set this to your application's name
-  APP_PACKAGE_PATH: 'published'        # set this to the path to your app project, defaults to the repository root
 
 jobs:
   build:
@@ -49,11 +48,8 @@ jobs:
     - name: Build
       run: msbuild ${{ env.APP_NAME }} /p:Configuration=Release
 
-    - name: Publish to folder
-      run: msbuild ${{ env.APP_NAME }} /p:Configuration=Release /p:DeployOnBuild=true /p:publishUrl=${{ env.APP_PACKAGE_PATH }} /p:PackageAsSingleFile=false
-
     - name: Publish artifacts
       uses: actions/upload-artifact@v4
       with:
         name: program
-        path: ${{ env.APP_PACKAGE_PATH }}
+        path: "VirtualDesktopManager/bin/Release/"
