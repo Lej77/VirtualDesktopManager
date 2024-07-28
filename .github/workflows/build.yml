@@ -55,6 +55,10 @@ jobs:
         name: VirtualDesktopManager
         path: "VirtualDesktopManager/bin/Release/"
 
+    # Zip release files
+    - name: Zip release files
+      run: powershell Compress-Archive VirtualDesktopManager/bin/Release/ VirtualDesktopManager.zip
+
     # Create the release:  https://github.com/actions/create-release
     - name: Create release
       id: create_release
@@ -66,10 +70,6 @@ jobs:
         release_name: VirtualDesktopManager Version ${{ github.ref }}
         draft: false
         prerelease: false
-
-    # Zip release files
-    - name: Zip release files
-      run: powershell Compress-Archive VirtualDesktopManager/bin/Release/ VirtualDesktopManager.zip
 
     # Upload release asset:   https://github.com/actions/upload-release-asset
     - name: Update release asset
