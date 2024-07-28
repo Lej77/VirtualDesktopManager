@@ -16,7 +16,9 @@ jobs:
     name: Build
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
 
     # Install the .NET Core workload
     - name: Install .NET Core
@@ -39,10 +41,10 @@ jobs:
       run: msbuild ${{ env.APP_NAME }} /p:Configuration=Release
 
     - name: Publish to folder
-      run: msbuild ${{ env.APP_NAME }} /p:Configuration=Release /p:DeployOnBuild=true /t:WebPublish /p:WebPublishMethod=FileSystem /p:publishUrl=${{ env.APP_PACKAGE_PATH }} /p:PackageAsSingleFile=false
+      run: msbuild ${{ env.APP_NAME }} /p:Configuration=Release /p:DeployOnBuild=true /p:publishUrl=${{ env.APP_PACKAGE_PATH }} /p:PackageAsSingleFile=false
 
     - name: Publish artifacts
-      uses: actions/upload-artifact@v1.0.0
+      uses: actions/upload-artifact@v4
       with:
         name: program
         path: ${{ env.APP_PACKAGE_PATH }}
