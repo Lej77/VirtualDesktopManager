@@ -1,0 +1,112 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows10.0.22000.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+    <ApplicationIcon>Icons\edges - transparent with white.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.27.2" />
+    <PackageReference Include="Slions.VirtualDesktop" Version="6.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VirtualDesktopServer\VirtualDesktopServer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="..\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Icons\edges - transparent with white.ico" />
+    <None Remove="Icons\edges - transparent.ico" />
+    <None Remove="Icons\edges - white - transparent with black.ico" />
+    <None Remove="Icons\edges - white - transparent.ico" />
+    <None Remove="Icons\edges.ico" />
+    <None Remove="Icons\solid - transperent.ico" />
+    <None Remove="Icons\solid - white - transperent.ico" />
+    <None Remove="Icons\solid.ico" />
+    <None Remove="Icons\triangle1.ico" />
+    <None Remove="Icons\triangle2.ico" />
+    <None Remove="Icons\triangle3.ico" />
+    <None Remove="Icons\triangle4.ico" />
+    <None Remove="Icons\triangle5.ico" />
+    <None Remove="Icons\triangle6.ico" />
+    <None Remove="Icons\triangle7.ico" />
+    <None Remove="Icons\triangle8.ico" />
+    <None Remove="Icons\triangle9.ico" />
+    <None Remove="Icons\triangle9plus.ico" />
+    <None Remove="Icons\triangleEmpty.ico" />
+    <None Remove="Icons\triangleEmptyImage.png" />
+    <None Remove="To do list.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMReference Include="SHDocVw">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>1</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>eab22ac0-30c1-11cf-a7eb-0000c05bae0b</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Icons\edges - transparent with white.ico" />
+    <Content Include="Icons\edges - transparent.ico" />
+    <Content Include="Icons\edges - white - transparent with black.ico" />
+    <Content Include="Icons\edges - white - transparent.ico" />
+    <Content Include="Icons\edges.ico" />
+    <Content Include="Icons\solid - transperent.ico" />
+    <Content Include="Icons\solid - white - transperent.ico" />
+    <Content Include="Icons\solid.ico" />
+    <Content Include="Icons\triangle1.ico" />
+    <Content Include="Icons\triangle2.ico" />
+    <Content Include="Icons\triangle3.ico" />
+    <Content Include="Icons\triangle4.ico" />
+    <Content Include="Icons\triangle5.ico" />
+    <Content Include="Icons\triangle6.ico" />
+    <Content Include="Icons\triangle7.ico" />
+    <Content Include="Icons\triangle8.ico" />
+    <Content Include="Icons\triangle9.ico" />
+    <Content Include="Icons\triangle9plus.ico" />
+    <Content Include="Icons\triangleEmpty.ico" />
+    <Content Include="Icons\triangleEmptyImage.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="../virtual-desktop-client/client-js/dist/deno-client.zip" Link="deno-client.zip" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ConfigureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
