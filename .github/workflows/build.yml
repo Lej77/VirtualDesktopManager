@@ -30,7 +30,7 @@ jobs:
       #   vs-version: "[16.4,16.9)"
 
     - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.2
+      uses: NuGet/setup-nuget@2
 
     - name: Restore NuGet packages
       run: nuget restore ${{ env.APP_NAME }}
