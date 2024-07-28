@@ -1,0 +1,42 @@
+# Copied from: https://github.com/timheuer/SimpleFrameworkApp/blob/3169a4cf6f8a72cce1b0c9e69dcf630b8a94ed86/.github/workflows/build.yml
+# See also the associated blog: https://timheuer.com/blog/building-net-framework-apps-using-github-actions/
+
+name: Build
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  APP_NAME: VirtualDesktopManager.sln  # set this to your application's name
+  APP_PACKAGE_PATH: 'published'        # set this to the path to your app project, defaults to the repository root
+
+jobs:
+  build:
+    name: Build and deploy
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup MSBuild path
+      uses: microsoft/setup-msbuild@v1.0.1
+      with:
+        vs-version: "[16.4,16.9)"
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
+
+    - name: Restore NuGet packages
+      run: nuget restore ${{ env.APP_NAME }}
+
+    - name: Build
+      run: msbuild ${{ env.APP_NAME }} /p:Configuration=Release
+
+    - name: Publish to folder
+      run: msbuild ${{ env.APP_NAME }} /p:Configuration=Release /p:DeployOnBuild=true /t:WebPublish /p:WebPublishMethod=FileSystem /p:publishUrl=${{ env.APP_PACKAGE_PATH }} /p:PackageAsSingleFile=false
+
+    - name: Publish artifacts
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: program
+        path: ${{ env.APP_PACKAGE_PATH }}
