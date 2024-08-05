@@ -2,6 +2,8 @@
 
 This is a WinForms application that uses [`Slion/VirtualDesktop` (a C# wrapper for the Virtual Desktop API on Windows 11)](https://github.com/Slion/VirtualDesktop) to move windows between different virtual desktops on Windows 10 and Windows 11.
 
+Note that there is newer Rust rewrite of this program available at: [Lej77/virtual-desktop-manager-rs: A Win32 application that can move windows between different virtual desktops](https://github.com/Lej77/virtual-desktop-manager-rs?tab=readme-ov-file).
+
 ## Features
 
 - Tray icon shows one-based index of current virtual desktop.
